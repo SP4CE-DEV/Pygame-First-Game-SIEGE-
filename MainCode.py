@@ -46,9 +46,9 @@ musicS2v1 = pygame.mixer.Sound("Audio/MusicS2v1.mp3")
 musicS2v2 = pygame.mixer.Sound("Audio/MusicS2v2.mp3")
 musicS3v1 = pygame.mixer.Sound("Audio/MusicS3v1.mp3")
 musicS3v2 = pygame.mixer.Sound("Audio/MusicS3v2.mp3")
-musicS1 = [musicS1v1]#, musicS1v2]
-musicS2 = [musicS2v1] #,musicS2v2]
-musicS3 = [musicS3v1] #, musicS3v2]
+musicS1 = [musicS1v1, musicS1v2]
+musicS2 = [musicS2v1, musicS2v2]
+musicS3 = [musicS3v1, musicS3v2]
 music1 = random.choice(musicS1)
 music1.set_volume(0.5)
 music1.play()
@@ -138,7 +138,7 @@ while GAME:
                 # MOVEMENT CONTROLS
             if event.key == pygame.K_a:
                 playerXspeed = -6
-            if event.key == pygame.K_d:
+            elif event.key == pygame.K_d:
                 playerXspeed = 6
 
         if event.type == pygame.KEYUP:
@@ -147,7 +147,7 @@ while GAME:
     #MAP  
     if playerX > 720:
         playerX = 720
-    if playerX < 0:
+    else if playerX < 0:
         playerX = 0
 
     if bulletState == True:
@@ -218,7 +218,7 @@ while GAME:
             for i in range(1,70):
                 screen.blit(Stage2Ann_IMG, (0,0))
                 pygame.display.update()
-    if score == 15:
+    else if score == 15:
         stage2 += 1
         music2.set_volume(0)
         enemy2S1_IMG = enemy2S3_IMG
@@ -242,6 +242,3 @@ while GAME:
     Enemy2(enemy2X, enemy2Y)
     clock.tick(60)
     pygame.display.update()
-                
-
-
